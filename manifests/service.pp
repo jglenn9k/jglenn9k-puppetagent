@@ -1,8 +1,7 @@
 # Class: puppetagent::service
 
 class puppetagent::service (
-    $service_state = true,
-    $service_ensure = 'running',
+
 ) {
     service { 'puppet':
         ensure  => $service_state,

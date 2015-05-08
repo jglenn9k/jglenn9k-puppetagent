@@ -9,7 +9,7 @@ class puppetagent::params {
             $package_source = "puppet-${puppetagent::params::version}-x64.msi"
             
             
-            $localconfig = "$vardir/localconfig"
+            $localconfig = '$vardir/localconfig'
         }
         'RedHat': {
 
