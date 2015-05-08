@@ -54,7 +54,10 @@ class puppetagent (
     $ssldir = '$vardir/ssl',
     $classfile = '$vardir/classes.txt',
     $localconfig = '$vardir/localconfig',
-
+    $statedir = '/var/lib/puppet/state',
+    $confdir = '/etc/puppet',
+    $libdir = '/var/lib/puppet/lib',
+    $environment = 'production',
 ) puppetagent::params
 {
 
