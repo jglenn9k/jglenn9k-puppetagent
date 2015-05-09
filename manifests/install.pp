@@ -36,7 +36,7 @@ class puppetagent::install {
                 descr    => "Puppet Labs Products El ${::operatingsystemmajrelease} - $basearch",
                 enabled  => '1',
                 gpgcheck => '1',
-                gpgkey   => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs',
+                gpgkey   => 'http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs',
             }
             yumrepo { 'puppetlabs-deps':
                 ensure   => 'present',
@@ -44,7 +44,7 @@ class puppetagent::install {
                 descr    => "Puppet Labs Dependencies El ${::operatingsystemmajrelease} - $basearch",
                 enabled  => '1',
                 gpgcheck => '1',
-                gpgkey   => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs',
+                gpgkey   => 'http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs',
             }
             package { 'puppet':
                 ensure  => "${puppetagent::params::version}-1.el${::operatingsystemmajrelease}",
@@ -52,7 +52,18 @@ class puppetagent::install {
             }
         }
         'Debian': {
-            fail("TODO: Add support for ${::osfamily}. Feel free to send a pull request.")
+            apt::source { 'puppetlabs':
+                location => 'http://apt.puppetlabs.com',
+                repos    => 'main',
+                key      => {
+                    'id'     => '47B320EB4C7C375AA9DAE1A01054B7A24BD6EC30',
+                    'server' => 'pgp.mit.edu',
+                },
+            }
+            package { $puppetPackages:
+                ensure  => "${version}-1puppetlabs1",
+                require => Apt::Source['puppetlabs']
+            }
         }
         default: {
             fail("Module ${module_name} is not currently supported on ${::osfamily}. Feel free to send a pull request.")

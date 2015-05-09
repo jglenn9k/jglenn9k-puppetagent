@@ -34,6 +34,7 @@
 #
 # Copyright 2015 James Glenn, unless otherwise noted.
 #
+
 class puppetagent (
     $service_enable = true,
     $service_ensure = 'running',
@@ -62,4 +63,3 @@ class puppetagent (
 {
 
 }
-
