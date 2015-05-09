@@ -15,7 +15,7 @@ class puppetagent::config {
             file {'puppet.conf':
                 path    => '/etc/puppet/puppet.conf',
                 owner   => 'root',
-                group   => 'root'
+                group   => 'root',
                 mode    => '0664',
                 content => template('puppet/puppet.conf.RedHat.erb'),
                 notify  => Service['puppet']

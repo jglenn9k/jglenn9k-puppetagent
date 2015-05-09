@@ -37,29 +37,12 @@
 
 class puppetagent (
     $service_enable = true,
-    $service_ensure = 'running',
+    $service_state = 'running',
     $version  = '3.7.5',
 
     $server   = 'puppet',
 
-    $archive_files = true,
-    $runinterval = '3600',
-    $report = true,
-    $reportserver = 'puppet',
-    $summarize = true,
-    $splay = true,
-    $usecacheonfailure = true,
-    $pluginsync = true,
-    $logdir = '/var/log/puppet',
-    $rundir = '/var/run/puppet',
-    $ssldir = '$vardir/ssl',
-    $classfile = '$vardir/classes.txt',
-    $localconfig = '$vardir/localconfig',
-    $statedir = '/var/lib/puppet/state',
-    $confdir = '/etc/puppet',
-    $libdir = '/var/lib/puppet/lib',
-    $environment = 'production',
-) puppetagent::params
-{
+
+) inherits puppetagent::params {
 
 }

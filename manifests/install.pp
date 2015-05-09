@@ -4,27 +4,27 @@
 # It downloads the package and installs it.
 #
 class puppetagent::install {
-    validate_string($puppetagent::windows_package_source_location)
-    validate_string($puppetagent::windows_package_source)
-    validate_string($puppetagent::windows_package_name)
+    validate_string($puppetagent::params::windows_package_source_location)
+    validate_string($puppetagent::params::windows_package_source)
+    validate_string($puppetagent::params::windows_package_name)
 
-    $source = "${puppetagent::windows_package_source_location}/${puppetagent::windows_package_source}"
+    $source = "${puppetagent::params::windows_package_source_location}/${puppetagent::params::windows_package_source}"
 
     case $::osfamily {
         'windows': {
-            if ! defined(File[$puppetagent::windows_download_destination]) {
-                file { $puppetagent::windows_download_destination:
+            if ! defined(File[$puppetagent::params::windows_download_destination]) {
+                file { $puppetagent::params::windows_download_destination:
                     ensure => directory,
                 }
             }
             download_file { 'Puppet Agent Installer':
                 url                   => $source,
-                destination_directory => $puppetagent::windows_download_destination,
-                require               => File[$puppetagent::windows_download_destination]
+                destination_directory => $puppetagent::params::windows_download_destination,
+                require               => File[$puppetagent::params::windows_download_destination]
             }
-            package { $nsclient::package_name:
-                ensure   => "$puppetagent::params::version",
-                source   => "${puppetagent::windows_download_destination}\\${puppetagent::windows_package_source}",
+            package { 'Puppet (x64)':
+                ensure   => "$puppetagent::version",
+                source   => "${puppetagent::params::windows_download_destination}\\${puppetagent::params::windows_package_source}",
                 provider => 'windows',
                 require  => Download_file['Puppet Agent Installer']
             }
@@ -47,7 +47,7 @@ class puppetagent::install {
                 gpgkey   => 'http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs',
             }
             package { 'puppet':
-                ensure  => "${puppetagent::params::version}-1.el${::operatingsystemmajrelease}",
+                ensure  => "${puppetagent::version}-1.el${::operatingsystemmajrelease}",
                 require => Yumrepo['puppetlabs-products'],
             }
         }
@@ -60,8 +60,8 @@ class puppetagent::install {
                     'server' => 'pgp.mit.edu',
                 },
             }
-            package { $puppetPackages:
-                ensure  => "${version}-1puppetlabs1",
+            package { 'puppet':
+                ensure  => "${puppetagent::version}-1puppetlabs1",
                 require => Apt::Source['puppetlabs']
             }
         }
