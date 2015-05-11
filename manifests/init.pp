@@ -39,7 +39,6 @@ class puppetagent (
     $service_enable = true,
     $service_state = 'running',
     $version  = '3.7.5',
-
     $server   = 'puppet',
 
 

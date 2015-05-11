@@ -1,0 +1,38 @@
+### File managed with puppet ###
+## Served by:        '<%= scope.lookupvar('::servername') %>'
+## Module:           '<%= scope.to_hash['module_name'] %>'
+## Template source:  'MODULES<%= template_source.gsub(Regexp.new("^#{Puppet::Node::Environment.current[:modulepath].gsub(':','|')}"),"") %>'
+
+[main]
+
+    server = <%= @server %>
+    logdir = <%= @logdir %>
+    rundir = <%= @rundir %>
+    ssldir = <%= @ssldir %>
+    statedir = <%= @statedir %>
+    confdir = <%= @confdir %>
+    libdir = <%= @libdir %>
+    environment = <%= @environment %>
+
+[master]
+
+    dns_alt_names = <%= @dns_alt_names.join(",") %>
+    document_all = <%= @document_all %>
+    environmentpath = <%= @confdir/environments %>
+    reports = <%= @reports.join(",") %>
+    storeconfigs = <%= @storeconfigs %>
+    storeconfigs_backend = <%= @puppetdb %>
+    ssl_client_header = <%= storeconfigs_backend %>
+    ssl_client_verify_header = <%= ssl_client_verify_header %>
+
+[agent]
+
+    archive_files = <%= @archive_files  %>
+    runinterval = <%= @runinterval %>
+    report = <%= @report %>
+    reportserver = <%= @reportserver %>
+    summarize = <%= @summarize %>
+    splay = <%= @splay %>
+    pluginsync = <%= @pluginsync %>
+    localconfig = <%= @localconfig %>
+    classfile = <%= @classfile %>
