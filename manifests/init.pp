@@ -41,36 +41,41 @@ class puppetagent (
     $version  = '3.7.5',
     $server   = 'puppet',
 
-    $pluginsync = puppetagent::params::pluginsync,
-    $logdir = puppetagent::params::logdir,
-    $rundir = puppetagent::params::rundir,
-    $ssldir = puppetagent::params::ssldir,
-    $classfile = puppetagent::params::classfile,
-    $localconfig = puppetagent::params::localconfig,
-    $statedir = puppetagent::params::statedir,
-    $confdir = puppetagent::params::confdir,
-    $libdir = puppetagent::params::libdir,
-    $environment = puppetagent::params::environment,
+    $pluginsync = $puppetagent::params::pluginsync,
+    $logdir = $puppetagent::params::logdir,
+    $rundir = $puppetagent::params::rundir,
+    $ssldir = $puppetagent::params::ssldir,
+    $classfile = $puppetagent::params::classfile,
+    $localconfig = $puppetagent::params::localconfig,
+    $statedir = $puppetagent::params::statedir,
+    $confdir = $puppetagent::params::confdir,
+    $libdir = $puppetagent::params::libdir,
+    $environment = $puppetagent::params::environment,
 
 # Settings for [agent]
-    $archive_files = puppetagent::params::archive_files,
-    $runinterval = puppetagent::params::runinterval,
-    $report = puppetagent::params::report,
-    $reportserver = puppetagent::params::reportserver,
-    $summarize = puppetagent::params::summarize,
-    $splay = puppetagent::params::splay,
-    $usecacheonfailure = puppetagent::params::usecacheonfailure,
+    $archive_files = $puppetagent::params::archive_files,
+    $runinterval = $puppetagent::params::runinterval,
+    $report = $puppetagent::params::report,
+    $reportserver = $puppetagent::params::reportserver,
+    $summarize = $puppetagent::params::summarize,
+    $splay = $puppetagent::params::splay,
+    $usecacheonfailure = $puppetagent::params::usecacheonfailure,
 
 # Settings for [master]
-    $storeconfigs = puppetagent::params::storeconfigs,
-    $storeconfigs_backend = puppetagent::params::storeconfigs_backend,
-    $reports = puppetagent::params::reports,
-    $ssl_client_header = puppetagent::params::ssl_client_header,
-    $ssl_client_verify_header = puppetagent::params::ssl_client_verify_header,
-    $environmentpath = puppetagent::params::environmentpath,
-    $document_all = puppetagent::params::document_all,
-    $dns_alt_names = puppetagent::params::dns_alt_names,
+    $storeconfigs = $puppetagent::params::storeconfigs,
+    $storeconfigs_backend = $puppetagent::params::storeconfigs_backend,
+    $reports = $puppetagent::params::reports,
+    $ssl_client_header = $puppetagent::params::ssl_client_header,
+    $ssl_client_verify_header = $puppetagent::params::ssl_client_verify_header,
+    $environmentpath = $puppetagent::params::environmentpath,
+    $document_all = $puppetagent::params::document_all,
+    $dns_alt_names = $puppetagent::params::dns_alt_names,
     
 ) inherits puppetagent::params {
+    validate_array($dns_alt_names)
+
+    class { '::puppetagent::config': }
+    class { '::puppetagent::install': }
+    class { '::puppetagent::service': }
 
 }

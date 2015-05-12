@@ -15,15 +15,14 @@
     environment = <%= @environment %>
 
 [master]
-
     dns_alt_names = <%= @dns_alt_names.join(",") %>
     document_all = <%= @document_all %>
-    environmentpath = <%= @confdir/environments %>
+    environmentpath = <%= @environmentpath %>
     reports = <%= @reports.join(",") %>
     storeconfigs = <%= @storeconfigs %>
     storeconfigs_backend = <%= @puppetdb %>
-    ssl_client_header = <%= storeconfigs_backend %>
-    ssl_client_verify_header = <%= ssl_client_verify_header %>
+    ssl_client_header = <%= @ssl_client_header %>
+    ssl_client_verify_header = <%= @ssl_client_verify_header %>
 
 [agent]
 
@@ -36,3 +35,4 @@
     pluginsync = <%= @pluginsync %>
     localconfig = <%= @localconfig %>
     classfile = <%= @classfile %>
+

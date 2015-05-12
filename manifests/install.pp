@@ -52,17 +52,17 @@ class puppetagent::install inherits puppetagent {
             }
         }
         'Debian': {
-            apt::source { 'puppetlabs':
+            apt::source { 'Puppetlabs products':
                 location => 'http://apt.puppetlabs.com',
                 repos    => 'main',
-                key      => {
-                    'id'     => '47B320EB4C7C375AA9DAE1A01054B7A24BD6EC30',
-                    'server' => 'pgp.mit.edu',
-                },
+            }
+            apt::source { 'Puppetlabs dependencies':
+                location => 'http://apt.puppetlabs.com',
+                repos    => 'dependencies',
             }
             package { 'puppet':
                 ensure  => "${puppetagent::version}-1puppetlabs1",
-                require => Apt::Source['puppetlabs']
+                require => Apt::Source['Puppetlabs products']
             }
         }
         default: {

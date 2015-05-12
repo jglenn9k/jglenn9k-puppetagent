@@ -21,6 +21,7 @@ class puppetagent::params {
     $summarize = true
     $splay = true
     $usecacheonfailure = false
+    $factpath = '/var/lib/puppet/lib/facter:/var/lib/puppet/facts:/lib/facter'
 
 # Settings for [master]
     $storeconfigs = true
@@ -32,31 +33,5 @@ class puppetagent::params {
     $document_all = false
     $dns_alt_names = ['puppet','puppet.example.lan','puppet.example.com']
 
-    case $::osfamily {
-        'windows': {
-            $windows_download_destination = 'C:\\temp'
-            $windows_package_source_location = 'http://downloads.puppetlabs.com/windows/'
-            $windows_package_name = 'Puppet (64-bit)'
-            $windows_package_source = "puppet-${puppetagent::version}-x64.msi"
-            $localconfig = '$vardir/localconfig'
-        }
-        'RedHat': {
-            $logdir = '/var/log/puppet'
-            $rundir = '/var/run/puppet'
-            $ssldir = '$vardir/ssl'
-            $classfile = '$vardir/classes.txt'
-            $localconfig = '$vardir/localconfig'
-        }
-        'Debian': {
-						$logdir = '/var/log/puppet'
-						$vardir = 'var/lib/puppet'
-						$ssldir = '/var/lib/puppet/ssl'
-						$rundir = '/var/run/puppet'
-						$factpath = '$vardir/lib/facter'
-
-        }
-        default: {
-            fail("Module ${module_name} is not currently supported on ${::osfamily}. Feel free to send a pull request.")
-        }
-    }
 }
+
