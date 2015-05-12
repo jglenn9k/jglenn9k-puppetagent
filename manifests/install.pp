@@ -33,7 +33,7 @@ class puppetagent::install inherits puppetagent {
             yumrepo { 'puppetlabs-products':
                 ensure   => 'present',
                 baseurl  => 'http://yum.puppetlabs.com/el/$releasever/products/$basearch',
-                descr    => "Puppet Labs Products El ${::operatingsystemmajrelease} - \$basearch",
+                descr    => "Puppet Labs Products El ${::operatingsystemmajrelease} - ${::architecture}",
                 enabled  => '1',
                 gpgcheck => '1',
                 gpgkey   => 'http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs',
@@ -41,7 +41,7 @@ class puppetagent::install inherits puppetagent {
             yumrepo { 'puppetlabs-deps':
                 ensure   => 'present',
                 baseurl  => 'http://yum.puppetlabs.com/el/$releasever/dependencies/$basearch',
-                descr    => "Puppet Labs Dependencies El ${::operatingsystemmajrelease} - \$basearch",
+                descr    => "Puppet Labs Dependencies El ${::operatingsystemmajrelease} - ${::architecture}",
                 enabled  => '1',
                 gpgcheck => '1',
                 gpgkey   => 'http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs',
