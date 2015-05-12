@@ -48,7 +48,12 @@ class puppetagent::params {
             $localconfig = '$vardir/localconfig'
         }
         'Debian': {
-            fail("TODO: Add support for ${::osfamily}. Feel free to send a pull request.")
+						$logdir = '/var/log/puppet'
+						$vardir = 'var/lib/puppet'
+						$ssldir = '/var/lib/puppet/ssl'
+						$rundir = '/var/run/puppet'
+						$factpath = '$vardir/lib/facter'
+
         }
         default: {
             fail("Module ${module_name} is not currently supported on ${::osfamily}. Feel free to send a pull request.")
