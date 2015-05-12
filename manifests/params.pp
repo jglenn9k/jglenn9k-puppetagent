@@ -20,7 +20,7 @@ class puppetagent::params {
     $reportserver = 'puppet'
     $summarize = true
     $splay = true
-    $usecacheonfailure = true
+    $usecacheonfailure = false
 
 # Settings for [master]
     $storeconfigs = true
@@ -29,7 +29,7 @@ class puppetagent::params {
     $ssl_client_header = 'SSL_CLIENT_S_DN'
     $ssl_client_verify_header = 'SSL_CLIENT_VERIFY'
     $environmentpath = '$confdir/environments'
-    $document_all = true
+    $document_all = false
     $dns_alt_names = ['puppet','puppet.example.lan','puppet.example.com']
 
     case $::osfamily {
