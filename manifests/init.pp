@@ -40,10 +40,10 @@ class puppetagent (
     $service_state = 'running',
     $version  = '3.7.5',
     $server   = 'puppet',
-    $windows_download_destination = 'C:\\temp',
-    $windows_package_source_location = 'http://downloads.puppetlabs.com/windows/',
+    $windows_download_destination = 'C:/temp',
+    $windows_package_source_location = 'http://downloads.puppetlabs.com/windows',
     $windows_package_name = 'Puppet (64-bit)',
-    $windows_package_source = "puppet-${::puppetagent::version}-x64.msi",
+    $windows_package_source = "puppet-3.7.5-x64.msi",
 
 # Settings for [main]
     $pluginsync = true,

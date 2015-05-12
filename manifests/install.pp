@@ -23,7 +23,7 @@ class puppetagent::install inherits puppetagent {
                 require               => File[$puppetagent::windows_download_destination]
             }
             package { 'Puppet (x64)':
-                ensure   => "$puppetagent::version",
+                ensure   => "${puppetagent::version}",
                 source   => "${puppetagent::windows_download_destination}\\${puppetagent::windows_package_source}",
                 provider => 'windows',
                 require  => Download_file['Puppet Agent Installer']
