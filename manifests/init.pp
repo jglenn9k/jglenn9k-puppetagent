@@ -65,11 +65,11 @@ class puppetagent (
     $storeconfigs = puppetagent::params::storeconfigs,
     $storeconfigs_backend = puppetagent::params::storeconfigs_backend,
     $reports = puppetagent::params::reports,
-    $ssl_client_header = puppetagent::params::,
-    $ssl_client_verify_header = puppetagent::params::,
-    $environmentpath = puppetagent::params::,
-    $document_all = puppetagent::params::,
-    $dns_alt_names = puppetagent::params::,
+    $ssl_client_header = puppetagent::params::ssl_client_header,
+    $ssl_client_verify_header = puppetagent::params::ssl_client_verify_header,
+    $environmentpath = puppetagent::params::environmentpath,
+    $document_all = puppetagent::params::document_all,
+    $dns_alt_names = puppetagent::params::dns_alt_names,
     
 ) inherits puppetagent::params {
 
