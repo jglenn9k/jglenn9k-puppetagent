@@ -3,7 +3,7 @@
 # This private class is meant to be called from `nsclient`.
 # It downloads the package and installs it.
 #
-class puppetagent::install {
+class puppetagent::install inherits puppetagent {
     validate_string($puppetagent::params::windows_package_source_location)
     validate_string($puppetagent::params::windows_package_source)
     validate_string($puppetagent::params::windows_package_name)

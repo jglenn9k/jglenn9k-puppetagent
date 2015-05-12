@@ -1,6 +1,6 @@
 # Class: puppetagent::params
 
-class puppetagent::params (
+class puppetagent::params {
 # Settings for [main]
     $pluginsync = true
     $logdir = '/var/log/puppet'
@@ -31,8 +31,7 @@ class puppetagent::params (
     $environmentpath = '$confdir/environments'
     $document_all = true
     $dns_alt_names = ['puppet','puppet.example.lan','puppet.example.com']
-)
-{
+
     case $::osfamily {
         'windows': {
             $windows_download_destination = 'C:\\temp'

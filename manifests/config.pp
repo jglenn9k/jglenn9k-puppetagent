@@ -1,6 +1,6 @@
 # Class: puppetagent::config
 
-class puppetagent::config {
+class puppetagent::config inherits puppetagent {
     case $::osfamily {
         'windows': {
             file {'puppet.conf':
