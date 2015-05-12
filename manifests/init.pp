@@ -40,39 +40,46 @@ class puppetagent (
     $service_state = 'running',
     $version  = '3.7.5',
     $server   = 'puppet',
+    $windows_download_destination = 'C:\\temp',
+    $windows_package_source_location = 'http://downloads.puppetlabs.com/windows/',
+    $windows_package_name = 'Puppet (64-bit)',
+    $windows_package_source = "puppet-${::puppetagent::version}-x64.msi",
 
-    $pluginsync = $puppetagent::params::pluginsync,
-    $logdir = $puppetagent::params::logdir,
-    $rundir = $puppetagent::params::rundir,
-    $ssldir = $puppetagent::params::ssldir,
-    $classfile = $puppetagent::params::classfile,
-    $localconfig = $puppetagent::params::localconfig,
-    $statedir = $puppetagent::params::statedir,
-    $confdir = $puppetagent::params::confdir,
-    $libdir = $puppetagent::params::libdir,
-    $environment = $puppetagent::params::environment,
+# Settings for [main]
+    $pluginsync = true,
+    $logdir = '/var/log/puppet',
+    $rundir = '/var/run/puppet',
+    $ssldir = '$vardir/ssl',
+    $classfile = '$vardir/classes.txt',
+    $localconfig = '$vardir/localconfig',
+    $statedir = '/var/lib/puppet/state',
+    $confdir = '/etc/puppet',
+    $libdir = '/var/lib/puppet/lib',
+    $environment = 'production',
 
 # Settings for [agent]
-    $archive_files = $puppetagent::params::archive_files,
-    $runinterval = $puppetagent::params::runinterval,
-    $report = $puppetagent::params::report,
-    $reportserver = $puppetagent::params::reportserver,
-    $summarize = $puppetagent::params::summarize,
-    $splay = $puppetagent::params::splay,
-    $usecacheonfailure = $puppetagent::params::usecacheonfailure,
+    $archive_files = true,
+    $runinterval = '3600',
+    $report = true,
+    $reportserver = 'puppet',
+    $summarize = true,
+    $splay = true,
+    $usecacheonfailure = false,
+    $factpath = '/var/lib/puppet/lib/facter:/var/lib/puppet/facts:/lib/facter',
 
 # Settings for [master]
-    $storeconfigs = $puppetagent::params::storeconfigs,
-    $storeconfigs_backend = $puppetagent::params::storeconfigs_backend,
-    $reports = $puppetagent::params::reports,
-    $ssl_client_header = $puppetagent::params::ssl_client_header,
-    $ssl_client_verify_header = $puppetagent::params::ssl_client_verify_header,
-    $environmentpath = $puppetagent::params::environmentpath,
-    $document_all = $puppetagent::params::document_all,
-    $dns_alt_names = $puppetagent::params::dns_alt_names,
-    
-) inherits puppetagent::params {
+    $storeconfigs = true,
+    $storeconfigs_backend = 'puppetdb',
+    $reports = ['http','puppetdb'],
+    $ssl_client_header = 'SSL_CLIENT_S_DN',
+    $ssl_client_verify_header = 'SSL_CLIENT_VERIFY',
+    $environmentpath = '$confdir/environments',
+    $document_all = false,
+    $dns_alt_names = ['puppet','puppet.example.lan','puppet.example.com'],
+
+) {
     validate_array($dns_alt_names)
+    validate_array($reports)
 
     class { '::puppetagent::config': }
     class { '::puppetagent::install': }
