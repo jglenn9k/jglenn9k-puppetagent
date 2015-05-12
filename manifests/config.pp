@@ -16,7 +16,7 @@ class puppetagent::config inherits puppetagent {
                 path    => '/etc/puppet/puppet.conf',
                 owner   => 'root',
                 group   => 'root',
-                mode    => '0664',
+                mode    => '0644',
                 content => template('puppetagent/puppet.conf.erb'),
                 notify  => Service['puppet']
             }
@@ -26,7 +26,7 @@ class puppetagent::config inherits puppetagent {
                 path    => '/etc/puppet/puppet.conf',
                 owner   => 'root',
                 group   => 'root',
-                mode    => '0664',
+                mode    => '0644',
                 content => template('puppetagent/puppet.conf.erb'),
                 notify  => Service['puppet']
             }
