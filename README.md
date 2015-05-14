@@ -20,18 +20,19 @@ Installs the Puppet agent and manages the configuration and service.
 ## Module Description
 
 The purpose of this module is to manage the puppet agent. There are various attempts
-out there that all work to some degree but I never found one I like. This is my 
-attempt.
+out there that all work to some degree but I never found one I like. I need something
+that will manage Linux and Windows the same way. I'm convinced Windows is no longer a
+second class citizen in the Puppet world. This is my attempt.
 
 ## Setup
 
 ### What puppetagent affects
 
-* Installs the Puppet agent
+* Installs the Puppet agent.
+* Manages official installation sources.
 * Manages the Puppet agent version.
-* Manages the puppet.conf file.
+* Manages the puppet.conf file. Including for a puppet master.
 * Manages the Puppet service.
-
 
 ### Beginning with puppetagent
 
@@ -57,18 +58,6 @@ class { 'puppetagent':
 }
 ```
 
-## Usage
-
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
-
-## Reference
-
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
-
 ## Limitations
 
 While I am attempting to cover every operating system, none of this is fully
@@ -76,11 +65,7 @@ tested. Use at your own risk.
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+Please send pull requests for OSs not covered. If you don't have time, submit an issue
+and I will attempt to add support.
 
-## Release Notes/Contributors/Etc **Optional**
 
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
