@@ -82,8 +82,8 @@ class puppetagent (
     validate_array($dns_alt_names)
     validate_array($reports)
 
-    class { '::puppetagent::config': }
-    class { '::puppetagent::install': }
-    class { '::puppetagent::service': }
+    include 'puppetagent::config'
+    include 'puppetagent::install'
+    include 'puppetagent::service'
 
 }
