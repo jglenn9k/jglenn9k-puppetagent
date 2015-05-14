@@ -56,6 +56,7 @@ class puppetagent (
     $confdir = '/etc/puppet',
     $libdir = '/var/lib/puppet/lib',
     $environment = 'production',
+    $configtimeout = '120',
 
 # Settings for [agent]
     $archive_files = true,
