@@ -8,6 +8,10 @@
   "project_page": "https://github.com/thedonkdonk/thedonkdonk-puppetagent",
   "issues_url": "https://github.com/thedonkdonk/thedonkdonk-puppetagent/issues",
   "operatingsystem_support": [
+  	{
+      "operatingsystem": "Darwin",
+      "operatingsystemrelease": ["14.3.0"]
+    },
     {
       "operatingsystem": "windows",
       "operatingsystemrelease": ["2008","2008 R2","2012","2012 R2"]

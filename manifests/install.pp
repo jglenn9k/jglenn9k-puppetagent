@@ -11,6 +11,14 @@ class puppetagent::install inherits puppetagent {
     $source = "${puppetagent::windows_package_source_location}/${puppetagent::windows_package_source}"
 
     case $::osfamily {
+        'Darwin': {
+            package { 'Puppet':
+                name     => "puppet-${puppetagent::version}.dmg", 
+                ensure   => "${puppetagent::version}",
+                source   => "http://downloads.puppetlabs.com/mac/puppet-${puppetagent::version}.dmg",
+                provider => 'pkgdmg',
+            }
+        }
         'windows': {
             if ! defined(File[$puppetagent::windows_download_destination]) {
                 file { $puppetagent::windows_download_destination:

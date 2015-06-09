@@ -2,6 +2,16 @@
 
 class puppetagent::config inherits puppetagent {
     case $::osfamily {
+        'Darwin': {
+            file {'puppet.conf':
+                path    => "${puppetagent::confdir}/puppet.conf",
+                owner   => 'root',
+                group   => 'root',
+                mode    => '0644',
+                content => template('puppetagent/puppet.conf.erb'),
+                notify  => Service['puppet']
+            }
+        }
         'windows': {
             file {'puppet.conf':
                 path    => "${puppetagent::confdir}/puppet.conf",
