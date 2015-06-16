@@ -6,7 +6,7 @@ class puppetagent::config inherits puppetagent {
             file {'puppet.conf':
                 path    => "${puppetagent::confdir}/puppet.conf",
                 owner   => 'root',
-                group   => 'root',
+                group   => 'wheel',
                 mode    => '0644',
                 content => template('puppetagent/puppet.conf.erb'),
                 notify  => Service['puppet']

@@ -14,7 +14,7 @@ class puppetagent::install inherits puppetagent {
         'Darwin': {
             package { 'Puppet':
                 name     => "puppet-${puppetagent::version}.dmg", 
-                ensure   => "${puppetagent::version}",
+                ensure   => 'installed',
                 source   => "http://downloads.puppetlabs.com/mac/puppet-${puppetagent::version}.dmg",
                 provider => 'pkgdmg',
             }
