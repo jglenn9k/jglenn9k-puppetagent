@@ -48,6 +48,7 @@ class puppetagent::config inherits puppetagent {
                 content => template('puppetagent/etc/default/puppet.erb'),
                 notify  => Service['puppet']
             }
+        }
         'Debian': {
             file {'puppet.conf':
                 path    => "${puppetagent::confdir}/puppet.conf",
