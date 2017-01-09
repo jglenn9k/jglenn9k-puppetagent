@@ -7,7 +7,7 @@
 # Document parameters here.
 #
 # [*server*]
-#   Sets the Puppet Master server
+#   Sets the Puppet Master server.
 #
 # === Variables
 #
@@ -32,13 +32,13 @@
 #
 # === Copyright
 #
-# Copyright 2015 James Glenn, unless otherwise noted.
+# Copyright 2017 James Glenn, unless otherwise noted.
 #
 
 class puppetagent (
     $service_enable = true,
     $service_state = 'running',
-    $version  = '3.7.5',
+    $version  = '4.8.1',
     $server   = 'puppet',
     $windows_download_destination = 'C:/temp',
     $windows_package_source_location = 'http://downloads.puppetlabs.com/windows',

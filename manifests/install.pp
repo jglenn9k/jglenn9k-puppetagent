@@ -1,6 +1,6 @@
 # == Class: puppetagent::install
 #
-# This private class is meant to be called from `nsclient`.
+# This private class is meant to be called from `puppetagent`.
 # It downloads the package and installs it.
 #
 class puppetagent::install inherits puppetagent {
@@ -11,14 +11,6 @@ class puppetagent::install inherits puppetagent {
     $source = "${puppetagent::windows_package_source_location}/${puppetagent::windows_package_source}"
 
     case $::osfamily {
-        'Darwin': {
-            package { 'Puppet':
-                name     => "puppet-${puppetagent::version}.dmg", 
-                ensure   => 'installed',
-                source   => "http://downloads.puppetlabs.com/mac/puppet-${puppetagent::version}.dmg",
-                provider => 'pkgdmg',
-            }
-        }
         'windows': {
             if ! defined(File[$puppetagent::windows_download_destination]) {
                 file { $puppetagent::windows_download_destination:
